@@ -16,8 +16,8 @@ def wait_until_midnight():
     current_second = current_time.tm_sec
 
     # 자정까지 남은 시간 계산
-    remaining_hours = 6 - current_hour - 1
-    remaining_minutes = 14 - current_minute
+    remaining_hours = 24 - current_hour - 1
+    remaining_minutes = 59 - current_minute
     remaining_seconds = 60 - current_second
     
     print( remaining_hours, remaining_minutes, remaining_seconds)
@@ -85,8 +85,8 @@ while(1):
         #print (df)
         #print ("\n")
     
-        df.to_csv("./2022-05-18-bithumb-orderbook.csv", index=False, header=False, mode = 'a') # 파일명 날짜 변경 필요
-        df2.to_csv("./2022-05-18-bithumb-orderbook2.csv", index=False, header=False, mode = 'a')
+        df.to_csv("./book-2024-04-29-bithumb-btc.csv", index=False, header=False, mode = 'a') # 파일명 날짜 변경 필요
+        df2.to_csv(".book-2024-04-29-bithumb-eth.csv", index=False, header=False, mode = 'a')
         '''
         should_write_header = os.path.exists(fn)
         if should_write_header == False:
