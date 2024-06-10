@@ -1,5 +1,5 @@
 import csv
-
+from decimal import Decimal, InvalidOperation
 def read_csv_to_list(file_path):
     rows = []
     with open(file_path, mode='r', newline='') as file:
@@ -21,14 +21,17 @@ quantity = 0 # 남은 수량
 ne_quan_err_count = 0 # 남은 수량이 음수가 되는지 체크
 b = 0
 a = [] # 수량이 움수가 된 줄
+
+
+
 # 결과 출력
 
 for line in csv_data:
-    pnl1 += float(line[4])
+    pnl1 += Decimal(line[4])
     
     if line[5] == '1': # sell
-        pnl2 += float(line[2])*float(line[1])-float(line[3])
-        quantity -= float(line[1])
+        pnl2 += Decimal(line[2])*Decimal(line[1])-Decimal(line[3])
+        quantity -= Decimal(line[1])
         b += 1
         if quantity <0:
             ne_quan_err_count += 1
@@ -36,16 +39,16 @@ for line in csv_data:
             #print(line)
             
     else:   # buy
-        pnl2 += (-1) * float(line[2])*float(line[1])-float(line[3])
-        quantity += float(line[1])
+        pnl2 += (-1) * Decimal(line[2])*Decimal(line[1])-Decimal(line[3])
+        quantity += Decimal(line[1])
         b += 1
     print(quantity)
-
+    
 
 print(pnl1)
 print(pnl2)
 
 print(quantity)
 print(ne_quan_err_count) 
-print(a)
-print(b) #header 제외 27201줄 
+#print(a)
+#print(b) #header 제외 27201줄 
