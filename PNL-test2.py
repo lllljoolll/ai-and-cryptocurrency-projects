@@ -42,7 +42,7 @@ for line in csv_data:
         pnl2 += (-1) * Decimal(line[2])*Decimal(line[1])-Decimal(line[3])
         quantity += Decimal(line[1])
         b += 1
-    print(quantity)
+    #print(quantity) 
     
 
 print(pnl1)
